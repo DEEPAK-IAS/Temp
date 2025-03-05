@@ -1,44 +1,159 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    div {
-      height: 100px;
-      width: 100px;
-      background-color: coral;
+    body {
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .parent {
+      height: 130%;
+      width: 90%;
+      margin-right: 5%;
+      margin-left: 5%;
+      border: 1px solid black;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 10px;
+    }
+
+
+    .course {
+      background-color: aquamarine;
+      position: relative;
+      width: 100%;
+      height: 400px;
+    }
+
+    .course img {
+      height: 80px;
+      width: 80px;
+      margin: 10px;
+      display: inline-block;
+    }
+
+    .course pre {
       position: absolute;
-      animation-name: ani;
-      animation-duration: 7s;
-      animation-iteration-count: infinite;
+      top: 10px;
+      left: -50px;
+      width: 200px;
+      font-size: 30px;
     }
 
-    @keyframes ani {
-      /* from {
-        top: 0;
-        left: 0;
+    .course div {
+      height: 50%;
+      width: 80%;
+      line-height: 30px;
+      word-break: break-all;
+      margin-top: 30px;
+      margin-left: 50px;
+    }
+
+    @media all and (max-width: 1100px) {
+      .parent {
+        grid-template-columns: auto auto;
       }
-      to {
-        top:0;
-        left: 200px;
-      } */
-
-      0% {top: 0; left: 0}
-      25% {top: 0; left: 100px}
-      50% {top: 100px; left: 100px}
-      75% {top: 100px; left: 0}
-      100% {top: 0; left: 0}
     }
 
-
-
-
+    @media all and (max-width: 750px) {
+      .parent {
+        grid-template-columns: auto;
+      }
+    }
 
   </style>
 </head>
 <body>
   
-  <div></div>
-  
+  <div class="parent">
+    <div class="course">
+      <img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div>
+    </div>
+    <div class="course"><img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div></div>
+    <div class="course"><img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div></div>
+    <div class="course"><img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div></div>
+    <div class="course"><img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div></div>
+    <div class="course"><img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div></div>
+    <div class="course"><img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div></div>
+    <div class="course"><img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div></div>
+    <div class="course"><img src="./imgs/react.webp" alt="">
+      <pre>
+           Advanced 
+           Programming
+      </pre>
+      <div>
+        AI, Machine Learning, Data Science, Java / Python, Full Stack / Web Development, AWS / Cloud Computing, Cyber security, Ethical Hacking, Big Data, Android Development, Software Testing, Digital Marketing, Advanced Excel, Power BI, Tableau.
+      </div></div>
+
+    </div>
+  </div>
+
 </body>
 </html>
