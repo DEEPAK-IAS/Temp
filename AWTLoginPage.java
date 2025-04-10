@@ -41,8 +41,6 @@ public class AWTLoginPage {
         loginButton.addActionListener(e -> {
             String email = emailField.getText();
             String password = passField.getText();
-            System.out.println("Email: " + email);
-            System.out.println("Password: " + password);
             Connection conn = db.getConnection();
             try {
                 PreparedStatement stmd = conn.prepareStatement("select * from admin");

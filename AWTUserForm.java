@@ -1,9 +1,18 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Map;
+import javax.swing.JOptionPane;
+
 
 public class AWTUserForm {
     public AWTUserForm() {
+        Connection conn = db.getConnection();
+        connectTable(conn);
         Frame frame = new Frame("User Form");
+
 
         frame.setSize(400, 350);
         frame.setLayout(null);
@@ -67,14 +76,21 @@ public class AWTUserForm {
         showBtn.setBounds(290, 230, 70, 30);
         frame.add(showBtn);
 
-        saveBtn.addActionListener(e -> System.out.println("Saved: " + nameField.getText()));
+        saveBtn.addActionListener(e -> {
+            Map<String, String> user = Map.of(
+                    "id", idField.getText(),
+                    "name", nameField.getText(),
+                    "email", emailField.getText(),
+                    "password", passwordField.getText()
+            );
+            addUser(user, conn);
+        });
         updateBtn.addActionListener(e -> System.out.println("Updated: " + idField.getText()));
-        deleteBtn.addActionListener(e -> System.out.println("Deleted: " + idField.getText()));
+        deleteBtn.addActionListener(e -> {
+            deleteUser(conn);
+        });
         showBtn.addActionListener(e -> {
-            System.out.println("ID: " + idField.getText());
-            System.out.println("Name: " + nameField.getText());
-            System.out.println("Email: " + emailField.getText());
-            System.out.println("Password: " + passwordField.getText());
+           showUser(conn);
         });
 
         frame.addWindowListener(new WindowAdapter() {
@@ -84,5 +100,64 @@ public class AWTUserForm {
         });
 
         frame.setVisible(true);
+    }
+
+    
+    void connectTable(Connection conn) {
+        try {
+
+            PreparedStatement stmd = conn.prepareStatement("create table if not exists users(id int primary key, name varchar(50), email varchar(50), password varchar(50))");
+            stmd.executeUpdate();
+            System.out.println("Table created successfully");
+
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+
+    void addUser(Map<String, String> user, Connection conn) {
+        try {
+    
+            PreparedStatement stmd = conn.prepareStatement("insert into users(id, name, email, password) values(?, ?, ?, ?)");
+            stmd.setInt(1, Integer.parseInt(user.get("id")));
+            stmd.setString(2, (String) user.get("name"));
+            stmd.setString(3, (String) user.get("email"));
+            stmd.setString(4, (String) user.get("password"));
+            stmd.executeUpdate();
+            System.out.println("User added successfully");
+
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+
+    void deleteUser(Connection conn) {
+        try {
+            String id = JOptionPane.showInputDialog(null, "Hello! This is a simple dialog.", "Simple Dialog", JOptionPane.INFORMATION_MESSAGE);
+            PreparedStatement stmd = conn.prepareStatement("delete from users where id = ?");
+            stmd.setInt(1, Integer.parseInt(id));
+            stmd.executeUpdate();
+            System.out.println("User deleted successfully");
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+
+    void showUser(Connection conn) {
+        try {
+            PreparedStatement stmd = conn.prepareStatement("select * from users");
+            ResultSet rs = stmd.executeQuery();
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt("id"));
+                System.out.println("Name: " + rs.getString("name"));
+                System.out.println("Email: " + rs.getString("email"));
+                System.out.println("Password: " + rs.getString("password"));
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 }
